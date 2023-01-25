@@ -4,7 +4,7 @@ export const authHeader = (token) => ({
   Authorization: `Bearer ${token}`,
 });
 
-export const getApiUrl = () => process.env.API_URL;
+export const getApiUrl = () => process.env.REACT_APP_API_URL;
 
 export const fetchLocal = (returnVal = null, delay = 0, success = true) => {
   return promiseWrapper(
@@ -66,11 +66,12 @@ export const responseHandler = async (response) => {
   return data;
 };
 
-export const getLSToken = () => localStorage.getItem(process.env.TOKEN_LSKEY);
+export const getLSToken = () =>
+  localStorage.getItem(process.env.REACT_APP_TOKEN_LSKEY);
 export const setLSToken = (token) =>
-  localStorage.setItem(process.env.TOKEN_LSKEY, token);
+  localStorage.setItem(process.env.REACT_APP_TOKEN_LSKEY, token);
 export const removeLSToken = () =>
-  localStorage.removeItem(process.env.TOKEN_LSKEY);
+  localStorage.removeItem(process.env.REACT_APP_TOKEN_LSKEY);
 
 export const decodeJwToken = (token) => {
   try {
@@ -83,16 +84,16 @@ export const decodeJwToken = (token) => {
 
 export const genJwToken = async (payload, expiresIn = '72H') => {
   const alg = 'RS256';
-  const kid = process.env.KID;
-  const pkcs8 = process.env.PRIVATE_KEY;
+  const kid = process.env.REACT_APP_KID;
+  const pkcs8 = process.env.REACT_APP_PRIVATE_KEY;
 
   try {
     const privateKey = await jose.importPKCS8(pkcs8, alg);
     const token = await new jose.SignJWT(payload)
       .setProtectedHeader({ alg, kid })
       .setIssuedAt()
-      .setIssuer(process.env.ISSUER)
-      .setAudience(process.env.AUDIENCE)
+      .setIssuer(process.env.REACT_APP_ISSUER)
+      .setAudience(process.env.REACT_APP_AUDIENCE)
       .setExpirationTime(expiresIn)
       .sign(privateKey);
     return token;
@@ -103,9 +104,9 @@ export const genJwToken = async (payload, expiresIn = '72H') => {
 
 export const verifyJwToken = async (token) => {
   const alg = 'RS256';
-  const spki = process.env.PUBLIC_KEY;
-  const audience = process.env.AUDIENCE;
-  const issuer = process.env.ISSUER;
+  const spki = process.env.REACT_APP_PUBLIC_KEY;
+  const audience = process.env.REACT_APP_AUDIENCE;
+  const issuer = process.env.REACT_APP_ISSUER;
 
   try {
     const publicKey = await jose.importSPKI(spki, alg);

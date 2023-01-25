@@ -27,10 +27,7 @@ export const ChatBox = ({ chat, retries }) => {
   const [chatHistory, setChatHistory] = useState([]);
   const previousChat = useRef({});
   const previousRetries = useRef(retries);
-  const [failedBefore, _, __] = useLocalStorage(
-    process.env.FAIL_LSKEY || 'ma_fb',
-    false
-  );
+  const [failedBefore, _, __] = useLocalStorage(process.env.REACT_APP_FAIL_LSKEY, false);
 
   const { getCache } = useCache();
   const oakAvatar = getCache(OAK_AVATAR_CACHE_KEY);

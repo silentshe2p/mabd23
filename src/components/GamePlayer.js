@@ -52,12 +52,9 @@ const GamePlayer = ({ puzzleResource }) => {
     [QUIZ_MEDIA_PATH]: quizMediaPath,
   } = puzzle[currQuiz];
 
-  const [failedBefore, setFailedBefore, removeFailedBefore] = useLocalStorage(
-    process.env.FAIL_LSKEY || 'ma_fb',
-    false
-  );
+  const [failedBefore, setFailedBefore, removeFailedBefore] = useLocalStorage(process.env.REACT_APP_FAIL_LSKEY, false);
   const [retries, setRetries] = useState(
-    failedBefore ? 0 : process.env.RETRIES_NUM || 3
+    failedBefore ? 0 : process.env.REACT_APP_RETRIES_NUM || 3
   );
   const [last2Answers, setLast2Answers] = useState([]);
   const [leftColHeight, setLeftColHeight] = useState(null);
