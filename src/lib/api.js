@@ -17,7 +17,6 @@ const apiUrl = getApiUrl();
 export const authUser = () => {
   const authedUserPromise = new Promise((resolve, reject) => {
     (async () => {
-      console.log('auth user...');
       try {
         const token = getLSToken();
         if (!token) return resolve(null); // no token stored so no user logged in
@@ -45,7 +44,6 @@ export const authUser = () => {
 };
 
 export const signInUser = async (user) => {
-  console.log(`login url: ${apiUrl + 'api/signin'}`)
   try {
     const res = await fetch(apiUrl + 'api/signin', {
       method: 'POST',
@@ -59,7 +57,8 @@ export const signInUser = async (user) => {
     const token = await genJwToken({ user });
     setLSToken(token);
   } catch (err) {
-    console.log(`login error: ${err.message}`)
+    // TODO: err reporting
+    console.log(`Failed to login: ${err.message}`);
     throw err;
   }
 };
@@ -75,6 +74,8 @@ const fetchData = (url, transformer = null, options = {}) =>
         return transformer ? transformer(data) : data;
       })
       .catch((err) => {
+        // TODO: error reporting
+        console.log(`Failed to fetch: ${err.message}`);
         throw err;
       })
   );
