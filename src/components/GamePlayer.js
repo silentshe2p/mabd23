@@ -192,7 +192,7 @@ const GamePlayer = ({ puzzleResource }) => {
             </Dimmer.Dimmable>
           </Grid.Column>
           </Ref>
-          <Grid.Column style={ ...(leftColHeight ? { maxHeight: leftColHeight } : {}) }>
+          <Grid.Column {...(leftColHeight ? { style: { maxHeight: leftColHeight } } : {})}>
             <ChatBox
               chat={quizChat}
               retries={retries}
