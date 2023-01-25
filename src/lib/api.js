@@ -45,6 +45,7 @@ export const authUser = () => {
 };
 
 export const signInUser = async (user) => {
+  console.log(`login url: ${apiUrl + 'api/signin'}`)
   try {
     const res = await fetch(apiUrl + 'api/signin', {
       method: 'POST',
@@ -58,6 +59,7 @@ export const signInUser = async (user) => {
     const token = await genJwToken({ user });
     setLSToken(token);
   } catch (err) {
+    console.log(`login error: ${err.message}`)
     throw err;
   }
 };

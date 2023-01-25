@@ -35,7 +35,7 @@ export const AuthProvider = ({ children, signedInUser }) => {
         replace: true,
         state: {
           ...(loginError.status === 401 ? { user } : {}), // for skipping this user who just failed to be signed in
-          loginError: { message: '不明ユーザー', ...loginError },
+          loginError: { message: loginError.status === 401 ? '不明ユーザー' : 'ログイン失敗', ...loginError },
           pathname: redirect,
         },
       });

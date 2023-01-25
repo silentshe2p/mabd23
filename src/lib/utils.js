@@ -55,6 +55,7 @@ export const responseHandler = async (response) => {
   const contentType = response.headers.get('content-type');
   if (contentType && contentType.includes('application/json')) {
     data = await response.json();
+    console.log(`data: ${data}`);
   }
   if (!response.ok) {
     const err = new Error(
