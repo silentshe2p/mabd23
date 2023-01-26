@@ -75,6 +75,7 @@ const IntroPlayer = ({ introResource, setNextPart, fetchNextPart }) => {
       <Comment.Group size="massive">
         <Comment>
           <Comment.Avatar
+            as='a'
             src={oakAvatar}
             style={{ maxWidth: '100%', height: 'auto' }}
           />
@@ -90,6 +91,7 @@ const IntroPlayer = ({ introResource, setNextPart, fetchNextPart }) => {
         <Divider hidden />
         <Comment>
           <Comment.Avatar
+            as='a'
             src={matAvatar}
             style={{ maxWidth: '100%', height: 'auto' }}
           />

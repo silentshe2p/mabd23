@@ -101,6 +101,7 @@ export const ChatBox = ({ chat, retries }) => {
           {chatHistory.map(({ chat, time }, idx) => (
             <Comment key={idx + '@' + time}>
               <Comment.Avatar
+                as="a"
                 src={oakAvatar}
                 style={{ maxWidth: '100%', height: 'auto' }}
               />
