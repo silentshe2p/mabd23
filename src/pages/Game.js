@@ -5,6 +5,7 @@ import { IntroPlayerSpWrapper } from '../components/IntroPlayer';
 import { GamePlayerSpWrapper } from '../components/GamePlayer';
 import { fetchAvatar, fetchIntro, fetchPuzzle } from '../lib/api';
 import { fetchLocal } from '../lib/utils';
+import './Game.css';
 
 export const GAME_INTRO = Symbol('INTRO');
 export const GAME_PUZZLE = Symbol('PUZZLE');
