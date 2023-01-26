@@ -99,11 +99,8 @@ export const ChatBox = ({ chat, retries }) => {
           duration={TRANSITION_DURATION}
         >
           {chatHistory.map(({ chat, time }, idx) => (
-            <Comment
-              key={idx + '@' + time}
-              style={{ display: 'flex', alignItems: 'center' }}
-            >
-              <Comment.Avatar src={oakAvatar} />
+            <Comment key={idx + '@' + time}>
+              <Comment.Avatar src={oakAvatar} style={{ display: 'flex' }} />
               <Comment.Content>
                 <Comment.Author as="a">博士</Comment.Author>
                 <Comment.Metadata>
