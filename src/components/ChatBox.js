@@ -27,7 +27,10 @@ export const ChatBox = ({ chat, retries }) => {
   const [chatHistory, setChatHistory] = useState([]);
   const previousChat = useRef({});
   const previousRetries = useRef(retries);
-  const [failedBefore, _, __] = useLocalStorage(process.env.REACT_APP_FAIL_LSKEY, false);
+  const [failedBefore, _, __] = useLocalStorage(
+    process.env.REACT_APP_FAIL_LSKEY,
+    false
+  );
 
   const { getCache } = useCache();
   const oakAvatar = getCache(OAK_AVATAR_CACHE_KEY);
@@ -90,25 +93,25 @@ export const ChatBox = ({ chat, retries }) => {
 
   return (
     <Ref innerRef={chatBoxRef}>
-    <Comment.Group minimal size="small" style={{ overflow: 'auto' }}>
-      <Transition.Group
-        animation={TRANSITION_ANIMATION}
-        duration={TRANSITION_DURATION}
-      >
-        {chatHistory.map(({ chat, time }, idx) => (
-          <Comment key={idx + '@' + time}>
-            <Comment.Avatar src={oakAvatar} />
-            <Comment.Content>
-              <Comment.Author as="a">博士</Comment.Author>
-              <Comment.Metadata>
-                <span>{time}</span>
-              </Comment.Metadata>
-              <Comment.Text>{chat}</Comment.Text>
-            </Comment.Content>
-          </Comment>
-        ))}
-      </Transition.Group>
-    </Comment.Group>
-  </Ref>
+      <Comment.Group minimal size="small" style={{ overflow: 'auto' }}>
+        <Transition.Group
+          animation={TRANSITION_ANIMATION}
+          duration={TRANSITION_DURATION}
+        >
+          {chatHistory.map(({ chat, time }, idx) => (
+            <Comment key={idx + '@' + time}>
+              <Comment.Avatar src={oakAvatar} style={{ height: 'auto' }} />
+              <Comment.Content>
+                <Comment.Author as="a">博士</Comment.Author>
+                <Comment.Metadata>
+                  <span>{time}</span>
+                </Comment.Metadata>
+                <Comment.Text>{chat}</Comment.Text>
+              </Comment.Content>
+            </Comment>
+          ))}
+        </Transition.Group>
+      </Comment.Group>
+    </Ref>
   );
 };

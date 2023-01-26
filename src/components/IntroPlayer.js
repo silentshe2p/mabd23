@@ -74,7 +74,7 @@ const IntroPlayer = ({ introResource, setNextPart, fetchNextPart }) => {
     return (
       <Comment.Group size="massive">
         <Comment>
-          <Comment.Avatar src={oakAvatar} />
+          <Comment.Avatar src={oakAvatar} style={{ height: 'auto' }} />
           <Comment.Content>
             <Comment.Author>{OAK_NAME}</Comment.Author>
             <Comment.Text>
@@ -86,7 +86,7 @@ const IntroPlayer = ({ introResource, setNextPart, fetchNextPart }) => {
         </Comment>
         <Divider hidden />
         <Comment>
-          <Comment.Avatar src={matAvatar} />
+          <Comment.Avatar src={matAvatar} style={{ height: 'auto' }} />
           <Comment.Content>
             <Comment.Author>{MAT_NAME}</Comment.Author>
             <Comment.Text>
