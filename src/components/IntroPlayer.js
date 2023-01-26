@@ -73,8 +73,8 @@ const IntroPlayer = ({ introResource, setNextPart, fetchNextPart }) => {
     const said = conversation[whom];
     return (
       <Comment.Group size="massive">
-        <Comment>
-          <Comment.Avatar className="comment-avatar" src={oakAvatar} />
+        <Comment style={{ display: 'flex' }}>
+          <Comment.Avatar src={oakAvatar} />
           <Comment.Content>
             <Comment.Author>{OAK_NAME}</Comment.Author>
             <Comment.Text>
@@ -85,7 +85,7 @@ const IntroPlayer = ({ introResource, setNextPart, fetchNextPart }) => {
           </Comment.Content>
         </Comment>
         <Divider hidden />
-        <Comment>
+        <Comment style={{ display: 'flex' }}>
           <Comment.Avatar className="comment-avatar" src={matAvatar} />
           <Comment.Content>
             <Comment.Author>{MAT_NAME}</Comment.Author>
