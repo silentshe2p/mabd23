@@ -22,7 +22,7 @@ const IntroPlayer = ({ introResource, setNextPart, fetchNextPart }) => {
   const sections = introResource.intro.read();
   const matAvatar = introResource.matAvatar.read();
   const oakAvatar = introResource.oakAvatar.read();
-  
+
   const { setCache } = useCache();
   if (oakAvatar) setCache(OAK_AVATAR_CACHE_KEY, oakAvatar);
 
@@ -74,7 +74,10 @@ const IntroPlayer = ({ introResource, setNextPart, fetchNextPart }) => {
     return (
       <Comment.Group size="massive">
         <Comment>
-          <Comment.Avatar src={oakAvatar} style={{ height: 'auto' }} />
+          <Comment.Avatar
+            src={oakAvatar}
+            style={{ maxWidth: '100%', height: 'auto' }}
+          />
           <Comment.Content>
             <Comment.Author>{OAK_NAME}</Comment.Author>
             <Comment.Text>
@@ -86,7 +89,10 @@ const IntroPlayer = ({ introResource, setNextPart, fetchNextPart }) => {
         </Comment>
         <Divider hidden />
         <Comment>
-          <Comment.Avatar src={matAvatar} style={{ height: 'auto' }} />
+          <Comment.Avatar
+            src={matAvatar}
+            style={{ maxWidth: '100%', height: 'auto' }}
+          />
           <Comment.Content>
             <Comment.Author>{MAT_NAME}</Comment.Author>
             <Comment.Text>
